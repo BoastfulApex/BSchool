@@ -62,6 +62,18 @@
                   <p>Hamkorlar</p>
                 </a>
               </li> 
+              <li class="nav-item">
+                <a href="{% url 'leaders' %}" class="nav-link {% if 'leaders' in segment %} active {% endif %}">
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>Rahbariyat</p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a href="{% url 'documents' %}" class="nav-link {% if 'documents' in segment %} active {% endif %}">
+                  <i class="nav-icon fas fa-folder"></i>
+                  <p>Hujjatlar</p>
+                </a>
+              </li> 
           </li>
         </ul>
       </nav>

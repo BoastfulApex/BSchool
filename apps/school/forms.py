@@ -157,43 +157,42 @@ class PartnerForm(forms.ModelForm):
 
 
 
-# class TypeForm(forms.ModelForm):
-#     name_uz = forms.CharField(
-#         widget=forms.TextInput(
-#             attrs={
-#                 "placeholder": "Type name uz",
-#                 "class": "form-control"
-#             }
-#         ),
-#         required=False,
-#         )
+class DocumentForm(forms.ModelForm):
+    name_uz = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Hujjat nomi uz",
+                "class": "form-control"
+            }
+        ),
+        required=False,
+        )
 
-#     name_ru = forms.CharField(
-#         widget=forms.TextInput(
-#             attrs={
-#                 "placeholder": "Type name  ru",
-#                 "class": "form-control"
-#             }
-#         ),
-#         required=False,
-#         )
-#     name_en = forms.CharField(
-#         widget=forms.TextInput(
-#             attrs={
-#                 "placeholder": "Type name en",
-#                 "class": "form-control"
-#             }
-#         ),
-#         required=False,
-#         )
-#     image = forms.ImageField(
-#       widget=forms.FileInput()
-#     )
+    name_ru = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Hujjat nomi  ru",
+                "class": "form-control"
+            }
+        ),
+        required=False,
+        )
+    name_en = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Hujjat nomi en",
+                "class": "form-control"
+            }
+        ),
+        required=False,
+        )
+    file = forms.FileField(
+      widget=forms.FileInput()
+    )
     
-#     class Meta:
-#         model = Type
-#         fields = "__all__"
-
+    class Meta:
+        model = Documents
+        fields = "__all__"
 
 
 class CourseForm(forms.ModelForm):
@@ -301,7 +300,7 @@ class NewsForm(forms.ModelForm):
     text_uz = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                "placeholder": "Yabgilik matni uz",
+                "placeholder": "Yangilik matni uz",
                 "class": "form-control"
             }
         ),
@@ -310,7 +309,7 @@ class NewsForm(forms.ModelForm):
     text_ru = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                "placeholder": "Yabgilik matni ru",
+                "placeholder": "Yangilik matni ru",
                 "class": "form-control"
             }
         ),
@@ -319,7 +318,7 @@ class NewsForm(forms.ModelForm):
     text_en = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                "placeholder": "Yabgilik matni en",
+                "placeholder": "Yangilik matni en",
                 "class": "form-control"
             }
         ),
@@ -362,7 +361,7 @@ class LeadershipForm(forms.ModelForm):
     position_uz = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                "placeholder": "Yabgilik matni uz",
+                "placeholder": "Yangilik matni uz",
                 "class": "form-control"
             }
         ),
@@ -371,7 +370,7 @@ class LeadershipForm(forms.ModelForm):
     position_ru = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                "placeholder": "Yabgilik matni ru",
+                "placeholder": "Yangilik matni ru",
                 "class": "form-control"
             }
         ),
@@ -380,7 +379,7 @@ class LeadershipForm(forms.ModelForm):
     position_en = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                "placeholder": "Yabgilik matni en",
+                "placeholder": "Yangilik matni en",
                 "class": "form-control"
             }
         ),

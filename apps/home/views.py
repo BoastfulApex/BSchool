@@ -395,7 +395,6 @@ def leaders_detail(request, pk):
 
     if request.method == 'POST':
         form = LeadershipForm(request.POST, request.FILES, instance=leaders)
-        print(request.FILES)
         if form.is_valid():
             form.save()
             return redirect('leaders')
@@ -426,6 +425,55 @@ class leadersDelete(DeleteView):
     model = Leadership
     fields = '__all__'
     success_url = reverse_lazy('leaders')
+
+
+def documents(request):
+    
+    documents = Documents.objects.all()
+    context = {
+        "documents": documents,
+        "segment":"documents"
+    }
+    
+    html_template =loader.get_template('home/documents.html')
+    return HttpResponse(html_template.render(context, request))
+
+    
+def documents_detail(request, pk):
+    documents = Documents.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES, instance=documents)
+        if form.is_valid():
+            form.save()
+            return redirect('documents')
+    else:
+        form = DocumentForm(instance=documents)
+
+    return render(request,
+                'home/document_update.html',
+                {'form': form, 'document': documents})
+
+
+
+def documents_create(request):
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('documents')
+    else:
+        form = DocumentForm()
+
+    return render(request,
+                'home/document_create.html',
+                {'form': form})
+
+
+class documentsDelete(DeleteView):
+    model = Documents
+    fields = '__all__'
+    success_url = reverse_lazy('documents')
 
 
 def course_by_category(request, pk):
