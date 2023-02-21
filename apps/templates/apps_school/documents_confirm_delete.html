@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Sliders {% endblock %} 
+{% block title %} Hujjatlar {% endblock %} 
 
 <!-- Element injected in the BODY element -->
 {% block body_class %} sidebar-mini {% endblock body_class %}
@@ -23,7 +23,7 @@
         <div class="container-fluid">  
             <form method="POST">
                 {% csrf_token %}
-                <p> O'chirishni tasdiqlaysizmi<br><b>{{partners.name_uz}}</b></p>
+                <p> O'chirishni tasdiqlaysizmi<br><b>{{documents.name_uz}}</b></p>
                 <input type="submit" value="O'chirish" class="btn btn-danger">
             </form>
         </div>

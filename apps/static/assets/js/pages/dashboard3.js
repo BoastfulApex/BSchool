@@ -2,7 +2,7 @@
 function httpGet()
 {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "https://maxone.abba.uz/api/dataset/", false ); // false for synchronous request
+    xmlHttp.open( "GET", "https://maxone.abba.uz/ataset/", false ); // false for synchronous request
     xmlHttp.send( null );
     const datas = xmlHttp.response
     return JSON.parse(datas);
