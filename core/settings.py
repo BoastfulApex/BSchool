@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'apps.authentication', 
     'apps.home',
     'apps.school',
-    
+    'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
