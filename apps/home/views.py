@@ -8,7 +8,6 @@ from apps.school.forms import *
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
 
 
 @login_required(login_url="/login/")

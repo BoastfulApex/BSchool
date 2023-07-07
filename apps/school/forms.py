@@ -156,7 +156,6 @@ class PartnerForm(forms.ModelForm):
 #         fields = "__all__"
 
 
-
 class DocumentForm(forms.ModelForm):
     name_uz = forms.CharField(
         widget=forms.TextInput(
@@ -337,6 +336,79 @@ class NewsForm(forms.ModelForm):
 
 
 class LeadershipForm(forms.ModelForm):
+    name_en = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Ism En",
+                "class": "form-control"
+            }
+        ))
+    name_uz = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Ism Uz",
+                "class": "form-control"
+            }
+        ))
+    name_ru = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Ism Ru",
+                "class": "form-control"
+            }
+        ))
+    position_uz = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "placeholder": "Yangilik matni uz",
+                "class": "form-control"
+            }
+        ),
+        required=False,
+        )
+    position_ru = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "placeholder": "Yangilik matni ru",
+                "class": "form-control"
+            }
+        ),
+        required=False,
+        )
+    position_en = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "placeholder": "Yangilik matni en",
+                "class": "form-control"
+            }
+        ),
+        required=False,
+        )
+    image = forms.ImageField(
+      widget=forms.FileInput()
+    )
+
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control"
+            }
+        ))
+    phone = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Telefon",
+                "class": "form-control"
+            }
+        ))
+
+    class Meta:
+        model = Leadership
+        fields = "__all__"
+
+
+class CourseOwner(forms.ModelForm):
     name_en = forms.CharField(
         widget=forms.TextInput(
             attrs={

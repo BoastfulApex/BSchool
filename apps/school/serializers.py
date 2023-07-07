@@ -47,3 +47,9 @@ class AboutSerializer(serializers.ModelSerializer):
         model = About
         fields = '__all__'
 
+
+class CourseOwnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseOwners
+        fields = '__all__'
+

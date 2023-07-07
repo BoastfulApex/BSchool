@@ -138,9 +138,31 @@ class Documents(models.Model):
         else:
             return ''
 
-
     
 class About(models.Model):
     about_uz = models.TextField(max_length=5000, null=True, blank=True)
     about_ru = models.TextField(max_length=5000, null=True, blank=True)
     about_en = models.TextField(max_length=5000, null=True, blank=True)
+
+
+class CourseOwners(models.Model):
+    name_uz = models.CharField(max_length=200, null=True, blank=True)
+    name_ru = models.CharField(max_length=200, null=True, blank=True)
+    name_en = models.CharField(max_length=200, null=True, blank=True)
+    position_uz = models.CharField(max_length=200, null=True, blank=True)
+    position_ru = models.CharField(max_length=200, null=True, blank=True)
+    position_en = models.CharField(max_length=200, null=True, blank=True)
+    phone = models.CharField(max_length=200, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name_uz
+
+    @property
+    def PhotoURL(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+

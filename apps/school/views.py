@@ -3,47 +3,52 @@ from .serializers import *
 from rest_framework import viewsets
 
 
-class AboutView(viewsets.ReadOnlyModelViewSet):
+class AboutView(viewsets.ModelViewSet):
     queryset = About.objects.all()
     serializer_class = AboutSerializer
 
 
-class SliderView(viewsets.ReadOnlyModelViewSet):
+class SliderView(viewsets.ModelViewSet):
     queryset = Slider.objects.all()
     serializer_class = SliderSerializer
-    
 
-class PartnerView(viewsets.ReadOnlyModelViewSet):
+
+class PartnerView(viewsets.ModelViewSet):
     queryset = Partners.objects.all()
     serializer_class = PartnerSerializer
     
 
-class NewsView(viewsets.ReadOnlyModelViewSet):
+class NewsView(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     
 
-class DocumentView(viewsets.ReadOnlyModelViewSet):
+class DocumentView(viewsets.ModelViewSet):
     queryset = Documents.objects.all()
     serializer_class = DocumentSerializer
     
 
-class AboutView(viewsets.ReadOnlyModelViewSet):
+class AboutView(viewsets.ModelViewSet):
     queryset = About.objects.all()
     serializer_class = AboutSerializer
     
 
-class LeadershipView(viewsets.ReadOnlyModelViewSet):
+class LeadershipView(viewsets.ModelViewSet):
     queryset = Leadership.objects.all()
     serializer_class = LeadershipSerializer
     
 
-class CategoryView(viewsets.ReadOnlyModelViewSet):
+class CategoryView(viewsets.ModelViewSet):
     queryset = CourseCategory.objects.all()
     serializer_class = CategorySerializer
-    
 
-class CourseView(viewsets.ReadOnlyModelViewSet):
+
+class CourseView(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    
+
+
+class CourseOwnerView(viewsets.ModelViewSet):
+    queryset = CourseOwners.objects.all()
+    serializer_class = CourseOwnerSerializer
+
