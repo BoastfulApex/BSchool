@@ -408,7 +408,7 @@ class LeadershipForm(forms.ModelForm):
         fields = "__all__"
 
 
-class CourseOwner(forms.ModelForm):
+class CourseOwnerForm(forms.ModelForm):
     name_en = forms.CharField(
         widget=forms.TextInput(
             attrs={

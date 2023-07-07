@@ -69,6 +69,12 @@
                 </a>
               </li> 
               <li class="nav-item">
+                <a href="{% url 'owners' %}" class="nav-link {% if 'owners' in segment %} active {% endif %}">
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>To'garak Rahbarlari</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{% url 'documents' %}" class="nav-link {% if 'documents' in segment %} active {% endif %}">
                   <i class="nav-icon fas fa-folder"></i>
                   <p>Hujjatlar</p>

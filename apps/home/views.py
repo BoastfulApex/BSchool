@@ -12,89 +12,6 @@ from datetime import datetime, timedelta
 
 @login_required(login_url="/login/")
 def index(request):
-    # today = datetime.today()
-    # year = today.year
-    # week = today.strftime("%V")
-    # visit_this_week = 0
-    # visit_last_week = 0
-    # product_update = ""
-    # best_products = []
-    # all = 0
-    # all_lead_amount = 0
-    # week_update = ""
-    # lead_update = ""
-    # last_month_amount = 0
-    # the_month_before_amount = 0
-    # visits = Visit.objects.all()
-    # leads = Lead.objects.all()
-    # today = datetime.today()
-    # last_month = today - relativedelta(months=1)
-    # the_month_before = today - relativedelta(months=2)
-    # for lead in leads:
-    #     all_lead_amount += int(lead.price)
-    #     if lead.date.month == last_month.month:
-    #         last_month_amount += lead.price
-    #     elif lead.date.month == the_month_before.month:
-    #         the_month_before_amount += lead.price
-    # lead_pount = abs(the_month_before_amount-last_month_amount)/(the_month_before_amount+1)
-    # if the_month_before_amount > last_month_amount:
-    #     lead_update = "down"
-    # else:
-    #     lead_update = "up"
-    # for visit in visits:
-    #     all += visit.count
-    #     if int(visit.date.strftime("%V")) == int(int(week)-1) and visit.date.year == year:
-    #         visit_this_week += visit.count
-    #     elif int(visit.date.strftime("%V")) == int(int(week) - 2) and int(visit.date.year) == int(year):
-    #         visit_last_week += visit.count 
-    # week_pount = abs(100 -  100 * ((visit_this_week+1)/visit_last_week+1))
-    # if visit_this_week > visit_last_week:
-    #     week_update = "up"
-    # else:
-    #     week_update = "down"
-    # products = Product.objects.all().order_by('-orders')
-    # for product in products[0:4]:
-    #     pount = abs(100 - 100 * ((product.orders - product.this_week_orders+1)/(product.orders - product.last_week_orders - product.this_week_orders+1)))
-    #     if (product.orders - product.this_week_orders) > (product.orders - product.last_week_orders - product.this_week_orders):
-    #         product_update = "up"
-    #     else:
-    #         product_update = "down"        
-    #     prd = {
-    #         "id": product.id,
-    #         "name": product.name_uz,
-    #         "orders": product.orders,
-    #         "price": product.price,
-    #         "product_update": product_update,
-    #         'pount': round(pount,2),
-    #         'image': product.image,
-    #     }
-    #     best_products.append(prd)
-    # week_date = today - relativedelta(months=1)
-    # last_week_date = today - relativedelta(months=2)
-    # leads_last_count = 0
-    # leads_before_count = 0
-    # ls = []
-    # visit = Visit.objects.filter(date=week_date).first()
-    # lds = Lead.objects.all()
-    # for i in lds:
-    #     if i.date.month == week_date.month:
-    #         leads_last_count += 1
-    #     elif i.date.month == last_week_date.month:
-    #         leads_before_count += 1
-    # leads_mont_edit = abs(100 -  100 * ((leads_last_count+1)/(leads_before_count+1)))
-        
-    
-    # context = {
-    #     'segment': 'index',
-    #     'week_pount': round(week_pount,2),
-    #     'lead_pount': round(lead_pount,2),
-    #     'leads_mont_edit': round(leads_mont_edit, 2),
-    #     'week_update': week_update,
-    #     'lead_update': lead_update,
-    #     'all_visits': all,
-    #     'all_lead_amount': all_lead_amount,
-    #     'best_products': best_products,
-    #     }
 
     context = {
         
@@ -107,8 +24,6 @@ def index(request):
 @login_required(login_url="/login/")
 def pages(request):
     context = {}
-    # All resource paths end in .html.
-    # Pick out the html file name from the url. And load that template.
     try:
 
         load_template = request.path.split('/')[-1]
@@ -125,7 +40,6 @@ def pages(request):
 
         html_template = loader.get_template('home/page-404.html')
         return HttpResponse(html_template.render(context, request))
-
     except:
         html_template = loader.get_template('home/page-500.html')
         return HttpResponse(html_template.render(context, request))
@@ -356,7 +270,6 @@ def news_detail(request, pk):
                 {'form': form, 'news': news})
 
 
-
 def news_create(request):
     if request.method == 'POST':
         form = NewsForm(request.POST, request.FILES)
@@ -378,17 +291,16 @@ class NewsDelete(DeleteView):
 
 
 def leaders(request):
-    
     leaders = Leadership.objects.all()
     context = {
         "leaders": leaders,
-        "segment":"leaders"
+        "segment": "leaders"
     }
-    
-    html_template =loader.get_template('home/leaders.html')
+
+    html_template = loader.get_template('home/leaders.html')
     return HttpResponse(html_template.render(context, request))
 
-    
+
 def leaders_detail(request, pk):
     leaders = Leadership.objects.get(id=pk)
 
@@ -401,9 +313,8 @@ def leaders_detail(request, pk):
         form = LeadershipForm(instance=leaders)
 
     return render(request,
-                'home/leaders_update.html',
-                {'form': form, 'leaders': leaders})
-
+                  'home/leaders_update.html',
+                  {'form': form, 'leaders': leaders})
 
 
 def leaders_create(request):
@@ -416,14 +327,61 @@ def leaders_create(request):
         form = LeadershipForm()
 
     return render(request,
-                'home/leaders_create.html',
-                {'form': form})
+                  'home/leaders_create.html',
+                  {'form': form})
 
 
 class leadersDelete(DeleteView):
     model = Leadership
     fields = '__all__'
     success_url = reverse_lazy('leaders')
+
+
+def course_owners(request):
+    owners = CourseOwners.objects.all()
+    context = {
+        "owners": owners,
+        "segment": "owners"
+    }
+
+    html_template = loader.get_template('home/owners.html')
+    return HttpResponse(html_template.render(context, request))
+
+
+def owners_detail(request, pk):
+    owner = CourseOwners.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = CourseOwnerForm(request.POST, request.FILES, instance=owner)
+        if form.is_valid():
+            form.save()
+            return redirect('owners')
+    else:
+        form = CourseOwnerForm(instance=leaders)
+
+    return render(request,
+                  'home/owner_update.html',
+                  {'form': form, 'owners': leaders})
+
+
+def owners_create(request):
+    if request.method == 'POST':
+        form = CourseOwnerForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('owners')
+    else:
+        form = CourseOwnerForm()
+
+    return render(request,
+                  'home/owner_create.html',
+                  {'form': form})
+
+
+class ownerDelete(DeleteView):
+    model = CourseOwners
+    fields = '__all__'
+    success_url = reverse_lazy('owners')
 
 
 def documents(request):
@@ -454,7 +412,6 @@ def documents_detail(request, pk):
                 {'form': form, 'document': documents})
 
 
-
 def documents_create(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -464,9 +421,7 @@ def documents_create(request):
     else:
         form = DocumentForm()
 
-    return render(request,
-                'home/document_create.html',
-                {'form': form})
+    return render(request, 'home/document_create.html', {'form': form})
 
 
 class documentsDelete(DeleteView):
@@ -484,49 +439,3 @@ def course_by_category(request, pk):
     
     html_template =loader.get_template('home/courses.html')
     return HttpResponse(html_template.render(context, request))
-
-
-# def product_by_brand(request, pk):
-#     products = Product.objects.filter(brand_id=pk).all()
-#     context = {
-#         "products": products,
-#         "segment":"products"
-#     }
-    
-#     html_template =loader.get_template('home/products.html')
-#     return HttpResponse(html_template.render(context, request))
-
-
-# def product_by_news(request, pk):
-#     products = Product.objects.filter(news_id=pk).all()
-#     context = {
-#         "products": products,
-#         "segment":"products"
-#     }
-    
-#     html_template =loader.get_template('home/products.html')
-#     return HttpResponse(html_template.render(context, request))
-
-
-# def color_create(request, pk):
-#     if request.method == 'POST':
-#         form = ColorForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             color = form.save()
-#             product = Product.objects.get(id=pk)
-#             color.product = product
-#             color.save()
-#             return redirect('product_detail', pk)
-#     else:
-#         form = ColorForm()
-
-#     return render(request,
-#                 'home/color_create.html',
-#                 {'form': form})
-
-
-# class ColorDelete(DeleteView):
-#     model = Color
-#     fields = '__all__'
-#     success_url = reverse_lazy('products')
-
