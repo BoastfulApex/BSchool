@@ -166,3 +166,116 @@ class CourseOwners(models.Model):
         else:
             return ''
 
+
+class PhotoGallery(models.Model):
+    name_uz = models.CharField(max_length=200, null=True, blank=True)
+    name_ru = models.CharField(max_length=200, null=True, blank=True)
+    name_en = models.CharField(max_length=200, null=True, blank=True)
+    image1 = models.ImageField(null=True, blank=True)
+    image2 = models.ImageField(null=True, blank=True)
+    image3 = models.ImageField(null=True, blank=True)
+    image4 = models.ImageField(null=True, blank=True)
+    image5 = models.ImageField(null=True, blank=True)
+    image6 = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name_uz
+
+    @property
+    def PhotoURL1(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def PhotoURL2(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def PhotoURL3(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def PhotoURL4(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def PhotoURL5(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def PhotoURL6(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+
+class VideoGallery(models.Model):
+    name_uz = models.CharField(max_length=200, null=True, blank=True)
+    name_ru = models.CharField(max_length=200, null=True, blank=True)
+    name_en = models.CharField(max_length=200, null=True, blank=True)
+    video1 = models.FileField(null=True, blank=True)
+    video2 = models.FileField(null=True, blank=True)
+    video3 = models.FileField(null=True, blank=True)
+    video4 = models.FileField(null=True, blank=True)
+    video5 = models.FileField(null=True, blank=True)
+    video6 = models.FileField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name_uz
+
+    @property
+    def VideoURL1(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def VideoURL2(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def VideoURL3(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def VideoURL4(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def VideoURL5(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''
+
+    @property
+    def VideoURL6(self):
+        if self.image:
+            return self.image.url
+        else:
+            return ''

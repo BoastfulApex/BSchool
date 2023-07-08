@@ -59,3 +59,13 @@ class CourseOwnerView(viewsets.ModelViewSet):
     queryset = CourseOwners.objects.all()
     serializer_class = CourseOwnerSerializer
 
+
+class PhotoGalleryView(viewsets.ModelViewSet):
+    queryset = PhotoGallery.objects.all()
+    serializer_class = PhotoGallerySerializer
+
+
+class VideoGalleryView(viewsets.ModelViewSet):
+    queryset = VideoGallery.objects.all()
+    serializer_class = VideoGallerySerializer
+

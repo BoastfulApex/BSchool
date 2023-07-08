@@ -53,3 +53,17 @@ class CourseOwnerSerializer(serializers.ModelSerializer):
         model = CourseOwners
         fields = '__all__'
 
+
+class PhotoGallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PhotoGallery
+        fields = '__all__'
+
+
+class VideoGallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VideoGallery
+        fields = '__all__'
+
+
+

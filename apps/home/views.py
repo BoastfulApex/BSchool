@@ -439,3 +439,50 @@ def course_by_category(request, pk):
     
     html_template =loader.get_template('home/courses.html')
     return HttpResponse(html_template.render(context, request))
+
+
+def photo_gallery(request):
+    photos = PhotoGallery.objects.all()
+    context = {
+        "photos": photos,
+        "segment": "photos"
+    }
+
+    html_template = loader.get_template('home/photos.html')
+    return HttpResponse(html_template.render(context, request))
+
+
+def photos_detail(request, pk):
+    photos = PhotoGallery.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = PhotoGalleryForm(request.POST, request.FILES, instance=photos)
+        if form.is_valid():
+            form.save()
+            return redirect('photos')
+    else:
+        form = PhotoGalleryForm(instance=photos)
+
+    return render(request,
+                  'home/photos_update.html',
+                  {'form': form, 'photos': photos})
+
+
+def photos_create(request):
+    if request.method == 'POST':
+        form = PhotoGalleryForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('photos')
+    else:
+        form = PhotoGalleryForm()
+
+    return render(request,
+                  'home/photos_create.html',
+                  {'form': form})
+
+
+class PhotoDelete(DeleteView):
+    model = PhotoGalleryForm
+    fields = '__all__'
+    success_url = reverse_lazy('photos')
