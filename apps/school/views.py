@@ -47,6 +47,13 @@ class CourseView(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+    def get_queryset(self):
+        queryset = Course.objects.all()
+        category_id = self.request.GET.get('category_id')
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+        return queryset
+
 
 class CourseOwnerView(viewsets.ModelViewSet):
     queryset = CourseOwners.objects.all()
