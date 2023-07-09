@@ -483,6 +483,53 @@ def photos_create(request):
 
 
 class PhotoDelete(DeleteView):
-    model = PhotoGalleryForm
+    model = PhotoGallery
     fields = '__all__'
     success_url = reverse_lazy('photos')
+
+
+def video_gallery(request):
+    videos = VideoGallery.objects.all()
+    context = {
+        "videos": videos,
+        "segment": "videos"
+    }
+
+    html_template = loader.get_template('home/videos.html')
+    return HttpResponse(html_template.render(context, request))
+
+
+def videos_detail(request, pk):
+    videos = VideoGallery.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = VideoGalleryForm(request.POST, request.FILES, instance=videos)
+        if form.is_valid():
+            form.save()
+            return redirect('videos')
+    else:
+        form = VideoGalleryForm(instance=videos)
+
+    return render(request,
+                  'home/videos_update.html',
+                  {'form': form, 'videos': videos, 'segment': 'videos'})
+
+
+def videos_create(request):
+    if request.method == 'POST':
+        form = VideoGalleryForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('videos')
+    else:
+        form = VideoGalleryForm()
+
+    return render(request,
+                  'home/videos_create.html',
+                  {'form': form, 'sigment': 'videos'})
+
+
+class VideoDelete(DeleteView):
+    model = VideoGallery
+    fields = '__all__'
+    success_url = reverse_lazy('videos')

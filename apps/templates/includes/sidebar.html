@@ -70,16 +70,22 @@
               </li> 
               <li class="nav-item">
                 <a href="{% url 'owners' %}" class="nav-link {% if 'owners' in segment %} active {% endif %}">
-                  <i class="nav-icon fas fa-user-tie"></i>
+                  <i class="nav-icon fas fa-user"></i>
                   <p>To'garak Rahbarlari</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{% url 'photos' %}" class="nav-link {% if 'photos' in segment %} active {% endif %}">
-                  <i class="nav-icon fas fa-folder"></i>
+                  <i class="nav-icon fas fa-image"></i>
                   <p>Foto Galereya</p>
                 </a>
               </li> 
+              <li class="nav-item">
+                <a href="{% url 'videos' %}" class="nav-link {% if 'videos' in segment %} active {% endif %}">
+                  <i class="nav-icon fas fa-video"></i>
+                  <p>Video Galereya</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="{% url 'documents' %}" class="nav-link {% if 'documents' in segment %} active {% endif %}">
                   <i class="nav-icon fas fa-folder"></i>

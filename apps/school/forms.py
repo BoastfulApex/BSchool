@@ -503,7 +503,12 @@ class PhotoGalleryForm(forms.ModelForm):
                 "class": "form-control"
             }
         ))
-
+    date = forms.DateField(
+        widget=forms.DateInput(
+            attrs={
+                'type': 'date',
+            }
+        ))
     image1 = forms.ImageField(
       widget=forms.FileInput(),
       required=False,
@@ -537,3 +542,67 @@ class PhotoGalleryForm(forms.ModelForm):
     class Meta:
         model = PhotoGallery
         fields = "__all__"
+
+
+class VideoGalleryForm(forms.ModelForm):
+    name_en = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Nomi En",
+                "class": "form-control"
+            }
+        ))
+    name_uz = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Nomi Uz",
+                "class": "form-control"
+            }
+        ))
+    name_ru = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Nomi Ru",
+                "class": "form-control"
+            }
+        ))
+    date = forms.DateField(
+        widget=forms.DateInput(
+            attrs={
+                'type': 'date',
+            }
+        ))
+    image1 = forms.ImageField(
+      widget=forms.FileInput(),
+      required=False,
+    )
+
+    image2 = forms.ImageField(
+      widget=forms.FileInput(),
+      required=False,
+    )
+
+    image3 = forms.ImageField(
+      widget=forms.FileInput(),
+      required=False,
+    )
+
+    image4 = forms.ImageField(
+      widget=forms.FileInput(),
+      required=False,
+    )
+
+    image5 = forms.ImageField(
+      widget=forms.FileInput(),
+      required=False,
+    )
+
+    image6 = forms.ImageField(
+      widget=forms.FileInput(),
+      required=False,
+    )
+
+    class Meta:
+        model = VideoGallery
+        fields = "__all__"
+

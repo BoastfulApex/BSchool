@@ -171,6 +171,7 @@ class PhotoGallery(models.Model):
     name_uz = models.CharField(max_length=200, null=True, blank=True)
     name_ru = models.CharField(max_length=200, null=True, blank=True)
     name_en = models.CharField(max_length=200, null=True, blank=True)
+    date = models.DateField(null=True)
     image1 = models.ImageField(null=True, blank=True)
     image2 = models.ImageField(null=True, blank=True)
     image3 = models.ImageField(null=True, blank=True)
@@ -183,43 +184,43 @@ class PhotoGallery(models.Model):
 
     @property
     def PhotoURL1(self):
-        if self.image:
-            return self.image.url
+        if self.image1:
+            return self.image1.url
         else:
             return ''
 
     @property
     def PhotoURL2(self):
-        if self.image:
-            return self.image.url
+        if self.image2:
+            return self.image2.url
         else:
             return ''
 
     @property
     def PhotoURL3(self):
-        if self.image:
-            return self.image.url
+        if self.image3:
+            return self.image3.url
         else:
             return ''
 
     @property
     def PhotoURL4(self):
-        if self.image:
-            return self.image.url
+        if self.image4:
+            return self.image4.url
         else:
             return ''
 
     @property
     def PhotoURL5(self):
-        if self.image:
-            return self.image.url
+        if self.image5:
+            return self.image5.url
         else:
             return ''
 
     @property
     def PhotoURL6(self):
-        if self.image:
-            return self.image.url
+        if self.image6:
+            return self.image6.url
         else:
             return ''
 
@@ -228,6 +229,7 @@ class VideoGallery(models.Model):
     name_uz = models.CharField(max_length=200, null=True, blank=True)
     name_ru = models.CharField(max_length=200, null=True, blank=True)
     name_en = models.CharField(max_length=200, null=True, blank=True)
+    date = models.DateField(null=True)
     video1 = models.FileField(null=True, blank=True)
     video2 = models.FileField(null=True, blank=True)
     video3 = models.FileField(null=True, blank=True)
@@ -240,42 +242,42 @@ class VideoGallery(models.Model):
 
     @property
     def VideoURL1(self):
-        if self.image:
-            return self.image.url
+        if self.video1:
+            return self.video1.url
         else:
             return ''
 
     @property
     def VideoURL2(self):
-        if self.image:
-            return self.image.url
+        if self.video2:
+            return self.video2.url
         else:
             return ''
 
     @property
     def VideoURL3(self):
-        if self.image:
-            return self.image.url
+        if self.video3:
+            return self.video3.url
         else:
             return ''
 
     @property
     def VideoURL4(self):
-        if self.image:
-            return self.image.url
+        if self.video4:
+            return self.video4.url
         else:
             return ''
 
     @property
     def VideoURL5(self):
-        if self.image:
-            return self.image.url
+        if self.video5:
+            return self.video5.url
         else:
             return ''
 
     @property
     def VideoURL6(self):
-        if self.image:
-            return self.image.url
+        if self.video6:
+            return self.video6.url
         else:
             return ''
