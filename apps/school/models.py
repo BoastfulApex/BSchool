@@ -1,6 +1,12 @@
 from django.db import models
 
 
+RAHBAR, XODIM = (
+    "Rahbariyat",
+    "Boshqa xodimlar"
+)
+
+
 class Slider(models.Model):
     name_uz = models.CharField(max_length=200, null=True, blank=True)
     name_ru = models.CharField(max_length=200, null=True, blank=True)
@@ -101,6 +107,10 @@ class Partners(models.Model):
 
 
 class Leadership(models.Model):
+    EMPLOYEE = (
+        (RAHBAR, RAHBAR),
+        (XODIM, XODIM)
+    )
     name_uz = models.CharField(max_length=200, null=True, blank=True)
     name_ru = models.CharField(max_length=200, null=True, blank=True)
     name_en = models.CharField(max_length=200, null=True, blank=True)
@@ -110,6 +120,7 @@ class Leadership(models.Model):
     phone = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    type = models.CharField(max_length=1000, null=True, choices=EMPLOYEE)
 
     def __str__(self):
         return self.name_uz

@@ -358,32 +358,36 @@ class LeadershipForm(forms.ModelForm):
             }
         ))
     position_uz = forms.CharField(
-        widget=forms.Textarea(
+        widget=forms.TextInput(
             attrs={
-                "placeholder": "Yangilik matni uz",
+                "placeholder": "Lavozim uz",
                 "class": "form-control"
             }
         ),
         required=False,
         )
     position_ru = forms.CharField(
-        widget=forms.Textarea(
+        widget=forms.TextInput(
             attrs={
-                "placeholder": "Yangilik matni ru",
+                "placeholder": "Lavozim ru",
                 "class": "form-control"
             }
         ),
         required=False,
         )
     position_en = forms.CharField(
-        widget=forms.Textarea(
+        widget=forms.TextInput(
             attrs={
-                "placeholder": "Yangilik matni en",
+                "placeholder": "Lavozim en",
                 "class": "form-control"
             }
         ),
         required=False,
         )
+    type = forms.ChoiceField(
+        choices=Leadership.EMPLOYEE
+    )
+
     image = forms.ImageField(
       widget=forms.FileInput()
     )

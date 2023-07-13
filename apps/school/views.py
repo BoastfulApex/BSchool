@@ -34,9 +34,17 @@ class AboutView(viewsets.ModelViewSet):
     
 
 class LeadershipView(viewsets.ModelViewSet):
-    queryset = Leadership.objects.all()
     serializer_class = LeadershipSerializer
-    
+
+    def get_queryset(self):
+        queryset = Leadership.objects.all()
+        type = self.request.GET.get('type')
+        if type == 'leader':
+            queryset = queryset.filter(type='Rahbariyat')
+        if type == 'employee':
+            queryset = queryset.filter(type='Boshqa xodimlar')
+        return queryset
+
 
 class CategoryView(viewsets.ModelViewSet):
     queryset = CourseCategory.objects.all()
