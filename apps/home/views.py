@@ -366,6 +366,7 @@ def owners_detail(request, pk):
 
 def owners_create(request):
     if request.method == 'POST':
+
         form = CourseOwnerForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
@@ -374,7 +375,7 @@ def owners_create(request):
         form = CourseOwnerForm()
 
     return render(request,
-                  'home/owner_create.html',
+                  'home/owners_create.html',
                   {'form': form})
 
 

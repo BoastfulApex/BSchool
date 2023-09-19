@@ -323,16 +323,15 @@ class NewsForm(forms.ModelForm):
         ),
         required=False,
         )
-    media = forms.ChoiceField(
-        
-        choices = Media,
+    media_type = forms.ChoiceField(
+        choices = News.Media.choices,
         )
     photo = forms.ImageField(
       widget=forms.FileInput()
     )
     class Meta:
         model = News
-        fields = ["name_uz", "name_ru", "name_en", "text_uz", "text_ru", "text_en", "media", "photo"]
+        fields = ["name_uz", "name_ru", "name_en", "text_uz", "text_ru", "text_en", "media_type", "photo"]
 
 
 class LeadershipForm(forms.ModelForm):
@@ -389,7 +388,9 @@ class LeadershipForm(forms.ModelForm):
     )
 
     image = forms.ImageField(
-      widget=forms.FileInput()
+        widget=forms.FileInput(),
+        required=False,
+      
     )
 
     email = forms.EmailField(
@@ -406,6 +407,26 @@ class LeadershipForm(forms.ModelForm):
                 "class": "form-control"
             }
         ))
+    
+    instagram = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Instagram",
+                "class": "form-control"
+                }
+            ),
+        required=False,
+    )
+
+    facebook = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Facebook",
+                "class": "form-control"
+            }
+        ),
+        required=False,
+        )
 
     class Meta:
         model = Leadership
@@ -481,7 +502,7 @@ class CourseOwnerForm(forms.ModelForm):
         ))
 
     class Meta:
-        model = Leadership
+        model = CourseOwners
         fields = "__all__"
 
 
@@ -575,35 +596,61 @@ class VideoGalleryForm(forms.ModelForm):
             attrs={
                 'type': 'date',
             }
-        ))
-    image1 = forms.ImageField(
-      widget=forms.FileInput(),
-      required=False,
+        ),
+        required=False,
+        )
+    video1_url = forms.URLField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        ),
+        required=False,
     )
 
-    image2 = forms.ImageField(
-      widget=forms.FileInput(),
-      required=False,
+    video2_url = forms.URLField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        ),
+        required=False,
     )
 
-    image3 = forms.ImageField(
-      widget=forms.FileInput(),
-      required=False,
+    video3_url = forms.URLField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        ),
+        required=False,
     )
 
-    image4 = forms.ImageField(
-      widget=forms.FileInput(),
-      required=False,
+    video4_url = forms.URLField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        ),
+        required=False,
     )
 
-    image5 = forms.ImageField(
-      widget=forms.FileInput(),
-      required=False,
+    video5_url = forms.URLField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        ),
+        required=False,
     )
 
-    image6 = forms.ImageField(
-      widget=forms.FileInput(),
-      required=False,
+    video6_url = forms.URLField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        ),
+        required=False,
     )
 
     class Meta:
